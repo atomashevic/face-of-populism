@@ -2,6 +2,9 @@
 
 Python code repository for the paper: "The Face of Populism: Examining Differences in Facial Emotional Expressions of Political Leaders Using Machine Learning"
 
+![image](https://user-images.githubusercontent.com/39856297/233164118-1531efa5-2b61-40d5-a6dd-98dce713c7f3.png)
+
+
 ArXiv Preprint: :eyes:
 
 ---
