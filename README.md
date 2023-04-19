@@ -21,7 +21,7 @@ Contents:
 
 ## Notebook: `notebook/emotion_detection.ipynb`
 
-Notebook has been tested on Google Colab and GH Codespaces environments. A separate repository will be created, adjusted for cloning the Codespace and running the notebook will be created. This will be the most simple, free option to run the notebook and process YT videos even on low-end machines without graphic card.
+Notebook has been tested on Google Colab and GH Codespaces environments. A separate repository will be created, modfied to be usable for cloning the Codespace and running the notebook. This will be the most simple, free option to run the notebook and process YT videos even on low-end machines without graphic card.
 
 Right now notebook is cumbersome, with lot of dependencies. In the future, we will try to simplify the process with minimal dependencies and without the need to have a GPU on local machine.
 
