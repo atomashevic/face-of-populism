@@ -2,7 +2,12 @@
 
 Python code repository for the paper: "The Face of Populism: Examining Differences in Facial Emotional Expressions of Political Leaders Using Machine Learning"
 
-ArXiv Preprint: :eyes:
+ArXiv Preprint: [https://arxiv.org/abs/2304.09914](https://arxiv.org/abs/2304.09914)
+
+
+![image](https://user-images.githubusercontent.com/39856297/233164118-1531efa5-2b61-40d5-a6dd-98dce713c7f3.png)
+
+
 
 ---
 
@@ -18,7 +23,7 @@ Contents:
 
 ## Notebook: `notebook/emotion_detection.ipynb`
 
-Notebook has been tested on Google Colab and GH Codespaces environments. A separate repository will be created, adjusted for cloning the Codespace and running the notebook will be created. This will be the most simple, free option to run the notebook and process YT videos even on low-end machines without graphic card.
+Notebook has been tested on Google Colab and GH Codespaces environments. A separate repository will be created, modfied to be usable for cloning the Codespace and running the notebook. This will be the most simple, free option to run the notebook and process YT videos even on low-end machines without graphic card.
 
 Right now notebook is cumbersome, with lot of dependencies. In the future, we will try to simplify the process with minimal dependencies and without the need to have a GPU on local machine.
 
