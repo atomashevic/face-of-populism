@@ -51,6 +51,7 @@ def create_results_df(mode='f50'):
     surprise = []
     neutral = []
     values = []
+    countries = []
     populism = []
     populism_values = [] 
     psize = []
@@ -81,12 +82,13 @@ def create_results_df(mode='f50'):
             surprise.append(sur)
             neutral.append(neu)
             party = gps[(gps["CPARTYABB"] == urls["party"][i])]
+            countries.append(urls["party"][i].split('_')[0])
             populism.append(fix_object(party["Type_Populism"]))
             values.append(fix_object(party["Type_Values"]))
             populism_values.append(fix_object(party["Type_Populist_Values"]))
             psize.append(fix_object(party["Type_Partysize_vote"]))
             psize_seat.append(fix_object(party["Type_Partysize_seat"]))
-    results = pd.DataFrame({'id':ids,'populism':populism, 'values':values, 'populism_values':populism_values,'psize':psize,'psize_seat':psize_seat,'anger':anger,'disgust':disgust,'fear':fear,'happy':happy,'sad':sad,'surprise':surprise,'neutral':neutral})
+    results = pd.DataFrame({'id':ids, 'country':countries,'populism':populism, 'values':values, 'populism_values':populism_values,'psize':psize,'psize_seat':psize_seat,'anger':anger,'disgust':disgust,'fear':fear,'happy':happy,'sad':sad,'surprise':surprise,'neutral':neutral})
     results['negative'] = results['anger'] + results['disgust'] + results['fear'] + results['sad']
     results['populism_2'] = None
     results['populism_2'][results['populism']>2] = 1

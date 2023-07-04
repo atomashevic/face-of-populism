@@ -109,6 +109,75 @@ plt.xlabel("Avg. score of neutral expression")
 plt.ylabel("Degree of populism")
 plt.savefig('../figures/fig4.png', bbox_inches='tight')
 
+
+# Country-level analysis
+
+### Country-means
+
+countries = d['country'].unique()
+negatives = []
+neutrals = []
+for country in countries:
+    negatives.append(d.loc[d['country']==country,'negative'].mean().round(3))
+    neutrals.append(d.loc[d['country']==country,'neutral'].mean().round(3))
+country_means = pd.DataFrame({'country':countries,'negative':negatives,'neutral':neutrals})
+country_means.to_csv('../results/country-means-f50.csv', index=False)
+
+### Country X populism means
+
+countries = d['country'].unique()
+populisms = d['populism2'].unique()
+populisms = populisms[::-1]
+negatives = []
+neutrals = []
+for country in countries:
+    for populism in populisms:
+        print(country)
+        print(populism)
+        if (len(d.loc[(d['country']==country)&(d['populism2']==populism)])>0):
+            print(d.loc[(d['country']==country)&(d['populism2']==populism),'negative'].mean().round(3))
+            negatives.append(d.loc[(d['country']==country)&(d['populism2']==populism),'negative'].mean().round(3))
+            print(d.loc[(d['country']==country)&(d['populism2']==populism),'neutral'].mean().round(3))
+            neutrals.append(d.loc[(d['country']==country)&(d['populism2']==populism),'neutral'].mean().round(3))
+        else:
+            negatives.append(np.nan)
+            neutrals.append(np.nan)
+
+pops = np.tile(populisms, len(countries))
+df = pd.DataFrame({'country':np.repeat(countries, len(populisms)),'populism':pops,'negative':negatives,'neutral':neutrals})
+df.to_csv('../results/country-populism-means-f50.csv', index=False)
+
+
+# FIGURE 8
+
+f, ax = plt.subplots(figsize=(16, 8))
+hue_order= ['Pluralist','Populist']
+sns.swarmplot(x='country', y='negative', hue='populism', data=df, marker='D', size = 5, hue_order= ['Pluralist','Populist', ])
+sns.swarmplot(x='country', y='negative', hue='populism2', data=d,alpha=0.5, size=3,hue_order= ['Pluralist','Populist', ])
+handles, labels = plt.gca().get_legend_handles_labels()
+plt.legend(handles, hue_order, title='Populism', loc='upper right')
+
+plt.xlabel("Country")
+plt.ylabel("Score of negative emotions")
+
+plt.savefig('../figures/fig8.png', bbox_inches='tight')
+
+# FIGURE 9
+
+f, ax = plt.subplots(figsize=(16, 8))
+hue_order= ['Pluralist','Populist']
+sns.swarmplot(x='country', y='neutral', hue='populism', data=df, marker='D', size = 5, hue_order= ['Pluralist','Populist', ])
+sns.swarmplot(x='country', y='neutral', hue='populism2', data=d,alpha=0.5, size=3,hue_order= ['Pluralist','Populist', ])
+handles, labels = plt.gca().get_legend_handles_labels()
+plt.legend(handles, hue_order, title='Populism', loc='upper left')
+
+# axis labels "Country" and "Avg. score of negative emotions"
+plt.xlabel("Country")
+plt.ylabel("Score of neutral expression")
+# title of the legend "Populism"
+
+plt.savefig('../figures/figA4-2', bbox_inches='tight')
+
 # ANOVA
 
 ## Negative

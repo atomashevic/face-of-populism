@@ -108,7 +108,7 @@ ax1=pt.RainCloud(x = dx, y = dy, data = d1, palette = pal, bw = sigma,
 plt.axvline(0.5, 0,2, color = 'black', linestyle='--', alpha = 0.6)
 plt.xlabel("Avg. score of neutral expression")
 plt.ylabel("Degree of populism")
-plt.savefig('../figures/fig7', bbox_inches='tight')
+plt.savefig('../figures/fig7.png', bbox_inches='tight')
 
 # ANOVA
 
