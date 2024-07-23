@@ -12,8 +12,20 @@ import matplotlib.collections as clt
 import scipy as sp
 import ptitprince as pt
 
-d = pd.read_csv("../results/results-t300.csv")
+d = pd.read_csv("results/results-t300.csv")
 d = d[-d['populism'].isna()]
+
+
+def cohens_d(group1, group2):
+    n1, n2 = len(group1), len(group2)
+    
+    var1, var2 = np.var(group1, ddof=1), np.var(group2, ddof=1)
+    
+    pooled_std = np.sqrt(((n1 - 1) * var1 + (n2 - 1) * var2) / (n1 + n2 - 2))
+    
+    d = (np.mean(group1) - np.mean(group2)) / pooled_std
+    
+    return d
 
 
 # TABLE 1

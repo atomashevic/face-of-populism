@@ -40,7 +40,7 @@ def fix_object(o):
             return(np.nan)
 
 def create_results_df(mode='f50'):
-    urls = pd.read_csv('../results/yt-urls-mark-manual-%s.csv' %(mode))
+    urls = pd.read_csv('results/yt-urls-mark-manual-%s.csv' %(mode))
     n = len(urls)
     ids = []
     anger = []
@@ -58,7 +58,7 @@ def create_results_df(mode='f50'):
     psize_seat = []
     for i in range(0,n):
         if (not i in trash):
-            tcsv = pd.read_csv('../data-clean/%s-%s.csv' %(i, mode))
+            tcsv = pd.read_csv('data-clean/%s-%s.csv' %(i, mode))
             if (i in cut_vids):
                 a = cut_from[cut_vids == i][0]
                 b = cut_to[cut_vids == i][0]
@@ -94,9 +94,10 @@ def create_results_df(mode='f50'):
     results['populism_2'][results['populism']>2] = 1
     results['populism_2'][results['populism']<=2] = 0
     print('pop done!')
-    results['lr_2'] = None
-    results['lr_2'][results['values'] > 2] = 1
-    results['lr_2'][results['values'] <= 2] = 0
+    results['ideology'] = None
+    results['ideology'] = results['values']
+    # results['lr_2'][results['values'] > 2] = 1
+    # results['lr_2'][results['values'] <= 2] = 0
     print('lr done!')
     return results
 
@@ -130,7 +131,7 @@ cut_to = np.array([204, 234, 280, 282, 291, 210, 294, 252, 283, 222, 218, 305])
 # have CSV called results/yt-urls-mark-manual-%s.csv
 
 res = create_results_df(m)
-res.to_csv('../results/results-%s.csv' %(m))
+res.to_csv('results/results-%s.csv' %(m))
 
 
 # f50 data analysis
