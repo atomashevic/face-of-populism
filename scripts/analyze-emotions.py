@@ -39,8 +39,8 @@ def fix_object(o):
         else:
             return(np.nan)
 
-def create_results_df(mode='f50'):
-    urls = pd.read_csv('results/yt-urls-mark-manual-%s.csv' %(mode))
+def create_results_df(mode='f50') -> pd.DataFrame
+    urls = pd.read_csv(f"../results/yt-urls-mark-manual-{mode}.csv")
     n = len(urls)
     ids = []
     anger = []
